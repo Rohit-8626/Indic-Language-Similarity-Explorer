@@ -14,6 +14,7 @@ model_name = './indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name , local_files_only = True)
 model = AutoModel.from_pretrained(model_name , device_map = "cpu" ,local_files_only = True)
+model.to(device)
 model.eval()
 
 
@@ -60,6 +61,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
