@@ -26,7 +26,7 @@ model.eval()
 def embedding_text(text : str) -> np.ndarray:
     # convert the text into the tokens
     inputs = tokenizer(text , padding = True , truncation = True , return_tensors = 'pt')
-    inputs = {k : v.to(device) for k , v in inputs.items()}
+    inputs = {k : v.to(torch.device('cpu')) for k , v in inputs.items()}
 
     # give tokens to the model
     with torch.no_grad():
@@ -65,6 +65,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
