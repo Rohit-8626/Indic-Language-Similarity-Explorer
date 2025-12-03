@@ -14,9 +14,9 @@ model_name = 'ai4bharat/indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name)
-model.to(device)
-model.eval()
 
+model.eval()
+model.to(device)
 
 def embedding_text(text : str) -> np.ndarray:
     # convert the text into the tokens
@@ -57,4 +57,5 @@ if st.button("Analyze"):
         if cluster == 1:
             st.write("Indo-Aryan Lnguage")
         else:
+
             st.write("Dravidian Language")
