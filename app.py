@@ -17,8 +17,8 @@ model_name = 'ai4bharat/indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 model = AutoModel.from_pretrained(MODEL_DIR)
-model.eval()
 model.to(device)
+model.eval()
 
 def embedding_text(text : str) -> np.ndarray:
     # convert the text into the tokens
@@ -61,6 +61,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
