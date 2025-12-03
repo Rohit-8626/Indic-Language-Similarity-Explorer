@@ -18,7 +18,7 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 
 @st.cache_resource
 def load_model(MODEL_DIR):
-    return AutoModel.from_pretrained(MODEL_DIR , torch_dtype = torch.float31)
+    return AutoModel.from_pretrained(MODEL_DIR , torch_dtype = torch.float32)
 model = load_model(MODEL_DIR)
 model.to(torch.device('cpu'))
 model.eval()
@@ -65,6 +65,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
