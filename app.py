@@ -6,26 +6,16 @@ import os
 import streamlit as st
 from sklearn.metrics.pairwise import cosine_similarity
 
-HF_TOKEN = st.secrets.get("huggingface", {}).get("token")
-
 language_centroids = joblib.load('language_centroids.pkl')
 KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 
 device = torch.device("cpu")
 model_name = 'ai4bharat/indic-bert'
 
-@st.cache_resource
-def load_tokenizer(model_name):
-    return AutoTokenizer.from_pretrained(model_name , token = HF_TOKEN)
-tokenizer = load_tokenizer(model_name)
-
-@st.cache_resource
-def load_model(model_name):
-    return AutoModel.from_pretrained(model_name , token = HF_TOKEN)
-model = load_model(model_name)
-model.to(device)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name)
 model.eval()
-
+model.to(device)
 
 def embedding_text(text : str) -> np.ndarray:
     # convert the text into the tokens
