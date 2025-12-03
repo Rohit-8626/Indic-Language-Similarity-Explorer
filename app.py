@@ -55,7 +55,8 @@ if st.button("Analyze"):
         cluster = KMeans.predict(transformed_text.reshape(1 , -1))
 
         if cluster == 1:
-            st.write("Indo-Aryan Lnguage")
+            st.write("Indo-Aryan Language")
         else:
 
             st.write("Dravidian Language")
+
