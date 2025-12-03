@@ -1,6 +1,6 @@
 streamlit
 torch
-transformers >= 4.30.0
+transformers
 joblib
 scikit-learn
 numpy
