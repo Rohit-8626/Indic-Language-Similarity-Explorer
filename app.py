@@ -12,7 +12,7 @@ MODEL_DIR = os.path.join(ROOT, "indic-bert")
 language_centroids = joblib.load('language_centroids.pkl')
 KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 model_name = 'ai4bharat/indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
@@ -62,6 +62,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
