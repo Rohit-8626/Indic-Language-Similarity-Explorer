@@ -6,14 +6,17 @@ import os
 import streamlit as st
 from sklearn.metrics.pairwise import cosine_similarity
 
+ROOT = os.path.dirname(__file__) if "__file__" in globals() else os.getcwd()
+MODEL_DIR = os.path.join(ROOT, "indic-bert")
+
 language_centroids = joblib.load('language_centroids.pkl')
 KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 
 device = torch.device("cpu")
 model_name = 'ai4bharat/indic-bert'
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+model = AutoModel.from_pretrained(MODEL_DIR)
 model.eval()
 model.to(device)
 
@@ -58,6 +61,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
