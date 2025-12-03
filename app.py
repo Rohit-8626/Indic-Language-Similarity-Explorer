@@ -12,15 +12,16 @@ KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 device = torch.device("cpu")
 model_name = './indic-bert'
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
-model.to(device)
+tokenizer = AutoTokenizer.from_pretrained(model_name , local_files_only = True)
+model = AutoModel.from_pretrained(model_name , device_map = "cpu" , torch_dtype = torch.float32 , local_files_only = True)
 model.eval()
 
 
 def embedding_text(text : str) -> np.ndarray:
     # convert the text into the tokens
     inputs = tokenizer(text , padding = True , truncation = True , return_tensors = 'pt')
+
+    inputs = {k: v.to(device) for k , v in inputs.items()}
 
     # give tokens to the model
     with torch.no_grad():
@@ -59,4 +60,5 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
