@@ -16,7 +16,11 @@ device = torch.device("cpu")
 model_name = 'ai4bharat/indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
-model = AutoModel.from_pretrained(MODEL_DIR)
+
+@st.cache_resource
+def load_model(MODEL_DIR):
+    return AutoModel.from_pretrained(MODEL_DIR)
+model = load_model(MODEL_DIR)
 model.to(device)
 model.eval()
 
@@ -62,6 +66,7 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
 
 
