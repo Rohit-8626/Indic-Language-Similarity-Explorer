@@ -88,10 +88,6 @@ A live web application is provided for real-time demonstration of the language c
 3.  It computes the **Cosine Similarity** between the input embedding and the pre-computed **centroid** (average embedding) for each of the eight languages.
 4.  It outputs the **Top-3 Closest Languages**, effectively performing zero-shot language identification based on semantic space proximity.
 
-### Inference Pipeline
-
-$$\text{User Sentence} \xrightarrow{\text{Indic-BERT}} \text{Input Embedding } (E_{\text{in}}) \xrightarrow{\text{Cosine Similarity}} \text{Similarity}(E_{\text{in}}, C_{\text{lang}}) \rightarrow \text{Ranked Closest Languages}$$
-
 ###  Example Results
 
 | Input Sentence | Top-3 Predicted Languages (Closest Centroids) |
@@ -100,7 +96,7 @@ $$\text{User Sentence} \xrightarrow{\text{Indic-BERT}} \text{Input Embedding } (
 | "मैं घर जा रहा हूँ" (Hindi) | **Hindi**, Punjabi, Gujarati |
 | "நான் வீட்டிற்கு செல்கிறேன்" (Tamil) | **Tamil**, Telugu, Malayalam |
 
-## 🧾 Installation
+##  Installation
 
 To run the Streamlit application locally:
 
