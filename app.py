@@ -10,7 +10,7 @@ language_centroids = joblib.load('language_centroids.pkl')
 KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 
 device = torch.device("cpu")
-model_name = 'ai4bharat/indic-bert'
+model_name = './indic-bert'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name)
@@ -57,4 +57,5 @@ if st.button("Analyze"):
         if cluster == 1:
             st.write("Indo-Aryan Lnguage")
         else:
+
             st.write("Dravidian Language")
