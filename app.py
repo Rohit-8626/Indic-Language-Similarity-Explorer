@@ -12,8 +12,15 @@ KMeans = joblib.load("Kmeans_Cluster_Indic_Language_model.pkl")
 device = torch.device("cpu")
 model_name = 'ai4bharat/indic-bert'
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
+@st.cache_resource
+def load_tokenizer(model_name):
+    return AutoTokenizer.from_pretrained(model_name)
+tokenizer = load_tokenizer(model_name)
+
+@st.cache_resource
+def load_model(model_name):
+    return AutoModel.from_pretrained(model_name)
+model = load_model(model_name)
 model.to(device)
 model.eval()
 
@@ -59,4 +66,5 @@ if st.button("Analyze"):
         else:
 
             st.write("Dravidian Language")
+
 
